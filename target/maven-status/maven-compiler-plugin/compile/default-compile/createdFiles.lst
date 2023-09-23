@@ -1,0 +1,10 @@
+dao\CursoDAO.class
+controller\DisciplinaController.class
+dao\DisciplinaDAO.class
+controller\CursoController.class
+model\Aluno.class
+model\Conteudo.class
+controller\AlunoController.class
+model\Curso.class
+dao\DaoBasico.class
+model\Matricula.class

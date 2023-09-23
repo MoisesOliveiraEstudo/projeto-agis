@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>agis-app</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error.jsp</location>
+  </error-page>
+  <servlet>
+    <description></description>
+    <display-name>AlunoController</display-name>
+    <servlet-name>AlunoController</servlet-name>
+    <servlet-class>controller.AlunoController</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>CursoController</display-name>
+    <servlet-name>CursoController</servlet-name>
+    <servlet-class>controller.CursoController</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>DisciplinaController</display-name>
+    <servlet-name>DisciplinaController</servlet-name>
+    <servlet-class>controller.DisciplinaController</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>MatriculaController</display-name>
+    <servlet-name>MatriculaController</servlet-name>
+    <servlet-class>controller.MatriculaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MatriculaController</servlet-name>
+    <url-pattern>/MatriculaController</url-pattern>
+  </servlet-mapping>
+</web-app>
