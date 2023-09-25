@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+body{
+	padding: 20px;
+	font-family: sans-serif;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	padding: 20px;
+}

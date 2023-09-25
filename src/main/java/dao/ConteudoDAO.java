@@ -23,13 +23,6 @@ public class ConteudoDAO implements DaoBasico<Conteudo>{
 		statement.close();
 	}
 	
-	@Override
-	public void atualizar(Conteudo e) throws SQLException, ClassNotFoundException {
-	}
-	
-	@Override
-	public void deletar(Conteudo e) throws SQLException, ClassNotFoundException {
-	}
 	
 	@Override
 	public List<Conteudo> listar() throws SQLException, ClassNotFoundException {

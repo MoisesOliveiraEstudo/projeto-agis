@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Curso;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import dao.CursoDAO;
@@ -32,7 +33,7 @@ public class DisciplinaController extends HttpServlet {
 		disciplinaDAO = new DisciplinaDAO();
 		try {
 			if(opcao.contains("adicionar")) {
-				Set<Curso> cursos = cursoDAO.listar();
+				List<Curso> cursos = cursoDAO.listar();
 				Curso curso = new Curso("Experimental");
 				//request.setAttribute("curso", curso);
 				request.setAttribute("cursos", cursos);

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Connector {
 
-	private static String uri = "jdbc:jtds:sqlserver://localhost:1433/db_agis_teste001";
+	private static String uri = "jdbc:jtds:sqlserver://localhost:1433/db_agis_001";
 	
 	public static Connection connect() throws ClassNotFoundException, SQLException {
 		Class.forName("net.sourceforge.jtds.jdbc.Driver");

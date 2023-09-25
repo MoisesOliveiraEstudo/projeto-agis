@@ -34,7 +34,7 @@ public class CursoDAO implements DaoBasico<Curso>{
 
 	public List<Curso> listar() throws SQLException, ClassNotFoundException {
 		connection = Connector.connect();
-		String query = "SELECT id, nome FROM curso";
+		String query = "SELECT codigo, nome FROM curso";
 		PreparedStatement statement = connection
 				.prepareStatement(query);
 		ResultSet set = statement.executeQuery();

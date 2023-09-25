@@ -7,6 +7,8 @@ public class Disciplina {
 	private int id;
 	private Curso curso;
 	private String nome;
+	private int horaComeco;
+	private String diaDaSemana;
 	private Set<Conteudo> conteudos;
 	
 	public Disciplina() {
@@ -19,6 +21,22 @@ public class Disciplina {
 		this.nome = nome;
 	}
 
+	public void setDiaDaSemana(String diaDaSemana) {
+		this.diaDaSemana = diaDaSemana;
+	}
+	
+	public String getDiaDaSemana() {
+		return diaDaSemana;
+	}
+	
+	public void setComeco(int comeco) {
+		this.horaComeco = comeco;
+	}
+	
+	public int getComeco() {
+		return horaComeco;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -49,6 +67,14 @@ public class Disciplina {
 	
 	public void setConteudos(Set<Conteudo> conteudos) {
 		this.conteudos = conteudos;
+	}
+	
+	public int getHoraComeco() {
+		return horaComeco;
+	}
+	
+	public void setHoraComeco(int horaComeco) {
+		this.horaComeco = horaComeco;
 	}
 	
 }

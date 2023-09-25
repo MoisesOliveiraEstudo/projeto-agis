@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/novoCurso.jsp">Novo Curso</a>
-	<a href="/curso?opcao=Listar">Listar Cursos</a>
-	<a href="disciplina?opcao=adicionar">Nova Disciplina</a>
+	Houve um erro, tente novamente
 </body>
 </html>

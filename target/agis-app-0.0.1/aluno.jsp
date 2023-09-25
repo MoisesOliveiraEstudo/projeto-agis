@@ -8,41 +8,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>AGIS - Cadastro do Aluno</title>
-<link rel="stylesheet" href="http://localhost:8080/style.css">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-	<style>
-		body{
-	padding: 2px;
-	font-family: sans-serif;
-}
-
-form{
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-}
-
-div{
-	display: flex;
-	flex-direction: column;
-	padding-bottom: 20px;
-}
-
-input{
-	margin-bottom: 15px;
-}
-
-a{
-	text-decoration: none;
-	color: black;
-}
-
-	</style>
-
 	<nav>
-		<a href="/">
+		<a>
 			<h2>AGIS</h2>
 		</a>
 	</nav>
@@ -52,21 +23,14 @@ a{
 	</div>
 
 	<form action="/aluno" method="POST" style="padding: 20px; ">
-		<div>
-			<label>CPF</label>
-			<input type="text" name="cpf" size="1px">
-			<label>Nome</label>
-			<input type="text" name="nome">
-		</div>
-		
-		<div>
-			<label>Nome social</label>
-			<input type="text" name="nome_social">
-			<label>Data de Nascimento</label>
-			<input type="date" name="data_nascimento">
-		</div>
-		
-		<div>
+		<label>CPF</label>
+		<input type="text" name="cpf" size="1px">
+		<label>Nome</label>
+		<input type="text" name="nome">
+		<label>Nome social</label>
+		<input type="text" name="nome_social">
+		<label>Data de Nascimento</label>
+		<input type="date" name="data_nascimento">
 		
 		<label>Curso</label>
 		<select name="curso_id">
@@ -76,9 +40,6 @@ a{
 					</option>
 				</c:forEach>
 		</select>
-		
-		</div>
-		
 		
 		<label>Telefone 1</label>
 		<input type="text" name="telefone" maxlength="9">
