@@ -189,3 +189,15 @@ END
 EXEC atualiza_aluno '202325494', '111111111', '2222222222', 'julia.font@email.com', 'julia.fontes14@fatec.sp'
 
 SELECT * FROM aluno
+
+SELECT aluno.ra, aluno.nome, curso.nome, aluno_detalhes.data_conclusao, emailCorporativo, emailPessoal FROM aluno, aluno_detalhes, matricula, curso
+WHERE aluno.ra = aluno_detalhes.aluno_ra
+AND aluno.ra = matricula.aluno_ra
+AND curso.codigo = matricula.curso_codigo
+
+SELECT * FROM aluno
+
+SELECT disciplina.id, disciplina.nome, disciplina.dia_semana, disciplina.hora_comeco FROM disciplina 
+WHERE disciplina.id IN (
+SELECT disciplina.id FROM disciplina, matricula, curso WHERE matricula.curso_codigo = curso.codigo AND matricula.aluno_ra = '202325494'
+AND matricula.curso_codigo = disciplina.curso_codigo)

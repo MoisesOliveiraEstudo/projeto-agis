@@ -70,6 +70,26 @@ public class DisciplinaDAO implements DaoBasico<Disciplina>{
 		return disciplinas;
 	}
 	
+	public List<Disciplina> listarDisciplinasMatriculadas(Aluno aluno) throws SQLException, ClassNotFoundException{
+		connection = Connector.connect();
+		String query = "SELECT disciplina.id, disciplina.nome, disciplina.dia_semana, disciplina.hora_comeco FROM disciplina \r\n"
+				+ "WHERE disciplina.id IN (\r\n"
+				+ "SELECT disciplina.id FROM disciplina, matricula, curso WHERE matricula.curso_codigo = curso.codigo AND matricula.aluno_ra = ?\r\n"
+				+ "AND matricula.curso_codigo = disciplina.curso_codigo)";
+		PreparedStatement statement = connection.prepareStatement(query);
+		statement.setString(1, aluno.getRa());
+		ResultSet set = statement.executeQuery();
+		List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+		while(set.next()) {
+			Disciplina disciplina = new Disciplina();
+			disciplina.setId(set.getInt("id"));
+			disciplina.setNome(set.getString("nome"));
+			disciplina.setDiaDaSemana(set.getString("dia_semana"));
+			disciplina.setHoraComeco(set.getInt("hora_comeco"));
+			disciplinas.add(disciplina);
+		}
+		return disciplinas;
+	}
 
 	
 }

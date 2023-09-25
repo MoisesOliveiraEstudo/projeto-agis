@@ -31,7 +31,9 @@ public class MatriculaController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String opcao = request.getParameter("opcao");
 		alunoDAO = new AlunoDAO();
+		disciplinaDAO = new DisciplinaDAO();
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		try {
 			alunos = alunoDAO.consultarAlunoCurso();
@@ -40,14 +42,38 @@ public class MatriculaController extends HttpServlet {
 		}
 		
 		request.setAttribute("alunos", alunos);
-		request.getRequestDispatcher("matriculaDisciplina.jsp").forward(request, response);
+		
+		if(opcao.contains("adicionar")) {
+			request.getRequestDispatcher("matriculaDisciplina.jsp").forward(request, response);
+		}
+		
+		if(opcao.contains("consultar")) {
+			
+			request.getRequestDispatcher("consultarDisciplina.jsp").forward(request, response);
+		}
+		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String botao = request.getParameter("botao");
 		String ra = request.getParameter("aluno_ra");
-		if(botao.contains("Pesquisar")) {
+		
+		if(botao.contains("Consultar")) {
+			Aluno aluno = new Aluno();
+			aluno.setRa(ra);
+			List<Disciplina> disciplinas = new ArrayList<Disciplina>();
+			try {
+				disciplinas = disciplinaDAO.listarDisciplinasMatriculadas(aluno);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("disciplinas", disciplinas);
+			request.getRequestDispatcher("consultarDisciplina.jsp").forward(request, response);
+		}
+		
+		
+		else if(botao.contains("Pesquisar")) {
 			doPut(request, response);
 		}
 		else {
@@ -104,7 +130,7 @@ public class MatriculaController extends HttpServlet {
 		}
 		request.setAttribute("disciplinas", disciplinas);
 		request.setAttribute("aluno", aluno);
-		request.getRequestDispatcher("matriculaDisciplina.jsp").forward(request, response);
+		request.getRequestDispatcher("consultarDisciplinas.jsp").forward(request, response);
 		
 	}
 

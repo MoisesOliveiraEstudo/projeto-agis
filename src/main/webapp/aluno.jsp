@@ -16,6 +16,7 @@
 		body{
 	padding: 2px;
 	font-family: sans-serif;
+	max-width: 600px;
 }
 
 form{

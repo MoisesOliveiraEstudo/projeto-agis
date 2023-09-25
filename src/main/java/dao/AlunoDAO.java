@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Aluno;
+import model.AlunoDetalhes;
 import model.Curso;
 import model.Disciplina;
 import model.Matricula;
@@ -81,15 +82,21 @@ public class AlunoDAO implements DaoComposto<Aluno>{
 	@Override
 	public List<Aluno> listar() throws SQLException, ClassNotFoundException {
 		connection = Connector.connect();
-		String query = "SELECT ra,cpf, nome, emailCorporativo FROM aluno";
+		String query = "SELECT aluno.cpf, aluno.ra, aluno.nome, curso.nome, aluno_detalhes.data_conclusao, emailCorporativo, emailPessoal FROM aluno, aluno_detalhes, matricula, curso\r\n"
+				+ "WHERE aluno.ra = aluno_detalhes.aluno_ra\r\n"
+				+ "AND aluno.ra = matricula.aluno_ra\r\n"
+				+ "AND curso.codigo = matricula.curso_codigo";
 		PreparedStatement statement = connection.prepareStatement(query);
 		ResultSet set = statement.executeQuery();
 		List<Aluno> alunos = new ArrayList<Aluno>();
 		while(set.next()) {
 			Aluno aluno = new Aluno();
+			AlunoDetalhes detalhes = new AlunoDetalhes();
+			detalhes.setDataConclusao(set.getDate("data_conclusao"));
 			aluno.setRa(set.getString("ra"));
 			aluno.setCPF(set.getString("cpf"));
 			aluno.setNome(set.getString("nome"));
+			aluno.setEmailPessoal(set.getString("emailPessoal"));
 			aluno.setEmailCorporativo(set.getString("emailCorporativo"));
 			alunos.add(aluno);
 		}

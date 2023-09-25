@@ -58,7 +58,17 @@ public class AlunoController extends HttpServlet {
 			request.getRequestDispatcher("operacaoAlunos.jsp").forward(request, response);
 		}
 		
-		
+		else if(opcao.contains("listar")) {
+			alunoDAO = new AlunoDAO();
+			List<Aluno> alunos = new ArrayList<Aluno>();
+			try {
+				alunos = alunoDAO.listar();
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("alunos", alunos);
+			request.getRequestDispatcher("listarAlunos.jsp").forward(request, response);
+		}
 		
 	}
 

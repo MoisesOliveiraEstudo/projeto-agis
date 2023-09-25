@@ -16,6 +16,8 @@ public class Aluno {
 	private List<Telefone> telefones;
 	private Matricula matricula;
 	
+	
+	
 	public void setRa(String ra) {
 		this.ra = ra;
 	}
